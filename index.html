@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Glam by Swathi | Makeup Artist</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Glam by <span data-firstname></span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact" class="btn-nav">Book Now</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  </nav>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <canvas id="particles"></canvas>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span data-title></span>
+      </div>
+      <h1>Beauty That<br>Tells <em>Your Story</em></h1>
+      <p class="hero-desc" data-subtagline></p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Book a Session</a>
+        <a href="#portfolio" class="btn-outline">View Portfolio</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="hero-frame">
+        <img id="hero-photo" src="" alt="Swathi - Makeup Artist" style="width:100%;height:520px;object-fit:cover;object-position:top;border-radius:4px;position:relative;z-index:1;"/>
+        <div class="hero-badge">
+          <p>Available for bookings</p>
+          <h4 data-firstname></h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label"><span>What I Offer</span></div>
+    <h2>Services &amp;<br><em>Specialities</em></h2>
+    <div class="services-grid">
+      <div class="card reveal">
+        <div class="card-num">01</div>
+        <i class="fas fa-ring"></i>
+        <h3>Bridal Makeup</h3>
+        <p>Full glam for your special day — trial session included. Long-lasting, camera-ready look.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-num">02</div>
+        <i class="fas fa-star"></i>
+        <h3>Party &amp; Events</h3>
+        <p>Stand out at any occasion. From soft glam to bold looks tailored to your style.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-num">03</div>
+        <i class="fas fa-camera-retro"></i>
+        <h3>Editorial &amp; Shoots</h3>
+        <p>Creative looks for photoshoots, campaigns, and content creation.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-num">04</div>
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Makeup Lessons</h3>
+        <p>1-on-1 tutorials to help you master your everyday or special occasion look.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-num">05</div>
+        <i class="fas fa-users"></i>
+        <h3>Group Bookings</h3>
+        <p>Bridesmaids, family events, or girls' nights — group rates available.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-num">06</div>
+        <i class="fas fa-home"></i>
+        <h3>Home Visits</h3>
+        <p>I come to you! Available for home visits within the city.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="on-dark">
+    <div class="section-label"><span>My Work</span></div>
+    <h2>Portfolio &amp;<br><em>Gallery</em></h2>
+
+    <div class="filter-btns">
+      <button class="filter active" onclick="filterGallery('all', this)">All</button>
+      <button class="filter" onclick="filterGallery('wedding', this)">Wedding Makeup</button>
+      <button class="filter" onclick="filterGallery('party', this)">Party Makeup</button>
+      <button class="filter" onclick="filterGallery('saree', this)">Saree Draping</button>
+      <button class="filter" onclick="filterGallery('hair', this)">Hair Style</button>
+      <button class="filter" onclick="filterGallery('nail', this)">Nail Art</button>
+      <button class="filter" onclick="filterGallery('beauty', this)">Beauty Services</button>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-prev" onclick="lightboxNav(-1, event)">&#8592;</button>
+    <button class="lightbox-next" onclick="lightboxNav(1, event)">&#8594;</button>
+    <div class="lightbox-inner">
+      <img id="lightbox-img" src="" alt=""/>
+      <div class="lightbox-caption">
+        <span id="lightbox-tag"></span>
+        <p id="lightbox-title"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img id="about-photo" src="" alt="About Swathi" style="width:100%;height:560px;object-fit:cover;object-position:top;border-radius:4px;position:relative;z-index:1;"/>
+      </div>
+      <div class="about-text reveal reveal-delay-1">
+        <div class="section-label"><span>About Me</span></div>
+        <h2>Hi, I'm <em data-firstname></em></h2>
+        <div data-about></div>
+        <div class="stats">
+          <div data-stat><h3></h3><p></p></div>
+          <div data-stat><h3></h3><p></p></div>
+          <div data-stat><h3></h3><p></p></div>
+        </div>
+        <a href="#contact" class="btn-primary">Work With Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="on-dark">
+    <div class="section-label"><span>Client Love</span></div>
+    <h2>What They <em>Say</em></h2>
+    <div class="testimonials-grid">
+
+      <!-- WhatsApp screenshot style -->
+      <div class="review-card wa-review">
+        <div class="review-header">
+          <div class="review-avatar"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <h4>Sara M.</h4>
+            <span class="review-source"><i class="fab fa-whatsapp"></i> WhatsApp</span>
+          </div>
+        </div>
+        <div class="wa-bubble">
+          <p>Swathi did my bridal makeup and I was absolutely blown away 😍 Everyone at the wedding kept asking who did my makeup. She's so talented and made me feel so comfortable!</p>
+          <span class="wa-time">10:42 AM ✓✓</span>
+        </div>
+      </div>
+
+      <!-- Instagram comment style -->
+      <div class="review-card ig-review">
+        <div class="review-header">
+          <div class="review-avatar ig-avatar"><i class="fab fa-instagram"></i></div>
+          <div>
+            <h4>@priya_looks</h4>
+            <span class="review-source"><i class="fab fa-instagram"></i> Instagram</span>
+          </div>
+        </div>
+        <div class="ig-comment">
+          <p><span>@priya_looks</span> Omg this look is STUNNING 😭🔥 You are so gifted! Booked her for my sister's engagement and she nailed it perfectly. Highly recommend!! ❤️</p>
+          <div class="ig-actions">
+            <span><i class="fas fa-heart"></i> 124 likes</span>
+            <span>2 days ago</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screenshot card style -->
+      <div class="review-card screenshot-review">
+        <div class="review-header">
+          <div class="review-avatar yt-avatar"><i class="fab fa-youtube"></i></div>
+          <div>
+            <h4>Reem A.</h4>
+            <span class="review-source"><i class="fab fa-youtube"></i> YouTube Comment</span>
+          </div>
+        </div>
+        <div class="yt-comment">
+          <p>Just watched your tutorial and tried it myself — came out amazing! Booked a lesson with Swathi and she's the most patient and skilled artist. 10/10 would recommend 🙌</p>
+          <div class="ig-actions">
+            <span><i class="fas fa-thumbs-up"></i> 89</span>
+            <span>1 week ago</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp screenshot 2 -->
+      <div class="review-card wa-review">
+        <div class="review-header">
+          <div class="review-avatar"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <h4>Divya K.</h4>
+            <span class="review-source"><i class="fab fa-whatsapp"></i> WhatsApp</span>
+          </div>
+        </div>
+        <div class="wa-bubble">
+          <p>Thank you so much Swathi!! The party makeup was perfect 💄 Got so many compliments. Will definitely book again for my cousin's wedding 🥰</p>
+          <span class="wa-time">7:15 PM ✓✓</span>
+        </div>
+      </div>
+
+      <!-- Instagram 2 -->
+      <div class="review-card ig-review">
+        <div class="review-header">
+          <div class="review-avatar ig-avatar"><i class="fab fa-instagram"></i></div>
+          <div>
+            <h4>@meghna.glam</h4>
+            <span class="review-source"><i class="fab fa-instagram"></i> Instagram</span>
+          </div>
+        </div>
+        <div class="ig-comment">
+          <p><span>@meghna.glam</span> Best makeup artist in the city no cap 🔥 She understood my vibe instantly and the result was chef's kiss 😘✨</p>
+          <div class="ig-actions">
+            <span><i class="fas fa-heart"></i> 210 likes</span>
+            <span>5 days ago</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add real screenshot placeholder -->
+      <div class="review-card screenshot-upload">
+        <i class="fas fa-image"></i>
+        <p>Add a real screenshot here</p>
+        <span>Replace this card with an &lt;img&gt; of your actual WhatsApp / Instagram review screenshot</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="section-label"><span>Get In Touch</span></div>
+    <h2>Book Your <em>Session</em></h2>
+    <p class="contact-intro">Ready to look your best? Reach out through any of these channels and I'll get back to you within 24 hours.</p>
+
+    <div class="contact-socials">
+      <a data-wa href="#" target="_blank" class="social-btn wa-btn">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat on WhatsApp</span>
+      </a>
+      <a data-ig href="#" target="_blank" class="social-btn ig-btn">
+        <i class="fab fa-instagram"></i>
+        <span>DM on Instagram</span>
+      </a>
+      <a data-yt href="#" target="_blank" class="social-btn yt-btn">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+      <a data-email href="#" class="social-btn email-btn">
+        <i class="fas fa-envelope"></i>
+        <span>Send an Email</span>
+      </a>
+    </div>
+
+    <div class="divider"><span>or fill the booking form</span></div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="e.g. Priya Sharma" required/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX" required/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Service</label>
+          <select required>
+            <option value="" disabled selected>Select a Service</option>
+            <option>Bridal Makeup</option>
+            <option>Party &amp; Events</option>
+            <option>Editorial &amp; Shoots</option>
+            <option>Makeup Lessons</option>
+            <option>Group Bookings</option>
+            <option>Home Visit</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell me about your event, theme, or any special requests..." rows="4"></textarea>
+      </div>
+      <button type="submit" class="btn-primary form-submit">Send Booking Request <i class="fas fa-paper-plane"></i></button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Glam by <span data-firstname></span></div>
+        <p class="footer-tagline">Professional Makeup Artist</p>
+      </div>
+      <div class="footer-socials">
+        <a data-wa href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a data-ig href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a data-yt href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a data-email href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-copyright></p>
+      <p>Made with ♥</p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
